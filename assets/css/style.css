@@ -1,3 +1,10 @@
+:root {
+  --header-footer-color: rgb(30, 96, 145);
+  --past-color: rgb(247, 101, 115);
+  --present-color: rgb(157, 180, 192);
+  --future-color: rgb(18, 132, 194);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,10 +17,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  line-height: 2;
 }
 
-.header {
+.header-container {
     min-height: 10rem;
 }
 .day-date {
@@ -26,6 +32,28 @@ body {
   justify-content: center;
   align-items: center;
 }
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 60rem;
+  margin: 2rem 0;
+}
+
+.past-time {
+  background-color: var(--past-color);
+}
+.present-time {
+  background-color: var(--present-color);
+}
+.future-time {
+  background-color: var(--future-color);
+}
+.time-slot {
+  border: none;
+  padding: 2rem;
+  width: 95%;
+}
 .footer {
-    min-height: 10rem;
+   
+    width: 100%;
 }
