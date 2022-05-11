@@ -1,43 +1,55 @@
-const headerElem = document.getElementById("header");
-const h1Elem = document.getElementById("h1");
-const mainElem = document.getElementById("main");
+const headerElem = document.getElementsByTagName("header")[0];
+const h1Elem = document.getElementsByTagName("h1")[0];
+const mainElem = document.getElementsByTagName("main")[0];
+const inputElem = document.getElementById("input-element");
+const currentDate = moment().format("YYYY-MM-DD");
+let timeElem;
 
 const renderDayAndDate = () => {
   const dayAndDate = document.createElement("h2");
   dayAndDate.classList.add("header-day-date");
   dayAndDate.textContent = moment().format("MMMM Do YYYY");
   
-
   headerElem.append(dayAndDate);
 };
 const renderDailyPlanner = () => {
     const dailyTimeSlots = document.createElement("div");
-    dailyTimeSlots.classList.add("input-group");
+    dailyTimeSlots.classList.add("dailyPlannerTable");
 
+    let storedPlans = JSON.parse(localStorage.getItem(currentDate));
+    if (!storedPlans) {
+      storedPlans = [];
+    }
+    
   for (let index = 6 ; index < 24; index++) {
 
     const hourlySlot = document.createElement("div");
     hourlySlot.classList.add("hourly-slot")
-    hourlySlot.classList.add(getTimeSlotClass(moment(), index));
+    setInterval(hourlySlot.classList.add(getTimeSlotClass(moment(), index)), 1000 * 60 * 60)
 
-    const timeElem = document.createElement("span");
+    timeElem = document.createElement("span");
     timeElem.classList.add("time-value");
     timeElem.textContent = index;
 
-    const timeSlotElem = document.createElement("input");
-    timeSlotElem.setAttribute("type", "text");
-    timeSlotElem.classList.add("time-slot");
-    timeSlotElem.classList.add(getTimeSlotClass(moment(), index));
+    const inputElem = document.createElement("input");
+    inputElem.setAttribute("type", "text");
+
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "save";
+
+    if(storedPlans.length){
+      inputElem.value = storedPlans[index-6]
+    } 
+    saveButton.addEventListener("click", updateInput);
     
     hourlySlot.appendChild(timeElem);
-    hourlySlot.appendChild(timeSlotElem);
+    hourlySlot.appendChild(inputElem);
+    hourlySlot.appendChild(saveButton);
     dailyTimeSlots.appendChild(hourlySlot);
     mainElem.appendChild(dailyTimeSlots);
   }
 };
-
 const getTimeSlotClass = (now, hour) => {
-  console.log(now.format("H"))
   if (now.format("H") > hour) {
     return 'past-time'
   }
@@ -46,6 +58,13 @@ const getTimeSlotClass = (now, hour) => {
   }
   return 'present-time';
 }
+
+const updateInput = () => {
+     const inputs = [...document.querySelectorAll(".hourly-slot input")]
+     .map(x => x.value);
+     localStorage.setItem(currentDate, JSON.stringify(inputs));
+}
+
 
 const init = () => {
   renderDayAndDate();

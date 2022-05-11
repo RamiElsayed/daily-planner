@@ -3,6 +3,11 @@
   --past-color: rgb(247, 101, 115);
   --present-color: rgb(157, 180, 192);
   --future-color: rgb(18, 132, 194);
+  --text-color: rgb(242, 242, 242);
+  --past-hover-color: hsl(354, 91%, 65%);
+  --future-hover-color: rgb(55, 173, 236);
+  --present-hover-color: rgb(178, 192, 199);
+  --button-hover: rgb(63, 137, 194);
 }
 
 * {
@@ -11,6 +16,7 @@
 html {
   font-size: 10px;
   text-transform: capitalize;
+  letter-spacing: 0.2rem;
 }
 body {
   display: flex;
@@ -19,41 +25,93 @@ body {
   margin: 0;
 }
 
-.header-container {
-    min-height: 10rem;
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 10rem;
+  background-color: var(--header-footer-color);
+  color: var(--text-color);
 }
-.day-date {
+
+.header-day-date {
   font-size: large;
 }
-.main {
+main {
   flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.input-group {
+.dailyPlannerTable {
   display: flex;
   flex-direction: column;
   width: 60rem;
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
-
-.past-time {
+.dailyPlannerTable > * {
+  margin-top: 1rem;
+}
+.past-time, .past-time > * {
   background-color: var(--past-color);
 }
-.present-time {
+.present-time, .present-time > * {
   background-color: var(--present-color);
 }
-.future-time {
+.future-time, .future-time > * {
   background-color: var(--future-color);
 }
-.time-slot {
-  border: none;
-  padding: 2rem;
-  width: 95%;
+.past-time input:hover {
+  background-color: var(--past-hover-color);
 }
-.footer {
-   
-    width: 100%;
+.present-time input:hover {
+  background-color: var(--present-hover-color);
+}
+.future-time input:hover {
+  background-color: var(--future-hover-color);
+}
+.hourly-slot {
+  display: flex;
+  font-size: 2rem;
+  border-radius: 5px;
+  height: 10rem;
+  color: var(--text-color);
+}
+
+.hourly-slot input {
+  flex: 8;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  line-height: 100%;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.time-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  flex: 1;
+}
+.hourly-slot button {
+  flex: 1;
+  border: none;
+  font-size: 1.5rem;
+  background-color: var(--header-footer-color);
+  color: var(--text-color);
+  border-radius: 00.5rem;
+}
+
+.hourly-slot button:hover {
+  background-color: var(--button-hover);
+  cursor: pointer;
+}
+footer {
+  background-color: var(--header-footer-color);
+  width: 100%;
+  min-height: 10rem;
+  color: var(--text-color);
 }
