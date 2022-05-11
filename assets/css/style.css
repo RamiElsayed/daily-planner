@@ -75,7 +75,7 @@ main {
   display: flex;
   font-size: 2rem;
   border-radius: 5px;
-  height: 10rem;
+  height: 7rem;
   color: var(--text-color);
 }
 
