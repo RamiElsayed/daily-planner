@@ -3,7 +3,6 @@ const h1Elem = document.getElementsByTagName("h1")[0];
 const mainElem = document.getElementsByTagName("main")[0];
 const inputElem = document.getElementById("input-element");
 const currentDate = moment().format("YYYY-MM-DD");
-let timeElem;
 
 const renderDayAndDate = () => {
   const dayAndDate = document.createElement("h2");
@@ -27,9 +26,11 @@ const renderDailyPlanner = () => {
     hourlySlot.classList.add("hourly-slot")
     setInterval(hourlySlot.classList.add(getTimeSlotClass(moment(), index)), 1000 * 60 * 60)
 
-    timeElem = document.createElement("span");
+    const timeElem = document.createElement("span");
     timeElem.classList.add("time-value");
-    timeElem.textContent = index;
+    var ampm = index >= 12 ? 'PM' : 'AM';
+    timeElem.textContent = index + ampm
+    
 
     const inputElem = document.createElement("input");
     inputElem.setAttribute("type", "text");
@@ -65,9 +66,6 @@ const updateInput = () => {
      localStorage.setItem(currentDate, JSON.stringify(inputs));
 }
 
-
-const init = () => {
   renderDayAndDate();
   renderDailyPlanner();
-};
-init();
+
