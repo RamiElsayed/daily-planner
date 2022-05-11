@@ -110,8 +110,32 @@ main {
   cursor: pointer;
 }
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--header-footer-color);
   width: 100%;
+  padding: 2rem 0;
   min-height: 10rem;
   color: var(--text-color);
+}
+.github-link,
+.resources-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  padding: 1rem 0;
+}
+@media screen and (max-width: 600px) {
+ 
+  .dailyPlannerTable{
+    width: 100%;
+    font-size: 1.2rem;
+  }
+  .time-value { 
+    margin: 0.2rem;
+  }
 }
