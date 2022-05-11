@@ -8,4 +8,4 @@ Added media query for small screens less than 600 px
 I was going to add a function that disable input in the past but though it's not sufficient as in real life u should be allowed to modify past planners with notes
 I added a button later as I designed it to save automatically initially but modified to requirements
 [project-link]( https://ramielsayed.github.io/daily-planner/) 
-[planner-screenshot](./assets/images/Screenshot%202022-05-11%20planner.jpg)
+./assets/images/Screenshot%202022-05-11%20planner.jpg
